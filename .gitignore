@@ -31,3 +31,8 @@ themes/default/public/lib/
 .DS_Store
 
 .idea
+
+composer.phar
+/vendor
+/public
+/node_modules
