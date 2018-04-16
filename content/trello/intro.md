@@ -1,0 +1,1 @@
+Rolling Glory menggunakan [Trello](http://trello.com) dengan Design Driven Development untuk project management. Dalam design driven development, task dikelompokkan berdasarkan halaman yang ada dalam aplikasi. Tiap-tiap halaman diorganisir ke dalam fase Backlog, To-Do, Doing, Client Revision, dan Client Ready sesuai dengan progressnya.
