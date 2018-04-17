@@ -16,7 +16,7 @@ gulp.task('copy_libs', () =>
     'node_modules/sweetalert2/**/*',
     'node_modules/jquery-backstretch/**/*'
   ], { base: 'node_modules' })
-  .pipe(gulp.dest(public_dir))
+  .pipe(gulp.dest(dest))
 );
 
 

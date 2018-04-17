@@ -43,10 +43,10 @@ var config = {
   content_dir : path.join(__dirname, 'content'),
 
   // Where is the public directory or document root?
-  public_dir  : path.join(__dirname, 'themes/default/public'),
-  get public_dir() {
+  get public_dir () {
     delete this.public_dir;
-    return this.public_dir = path.join(this.theme_dir, config.theme_name, 'public');
+    this.public_dir = path.join(this.theme_dir, config.theme_name, 'public');
+    return this.public_dir;
   },
 
   // The base URL of your images folder,
@@ -116,7 +116,6 @@ var config = {
   // ]
 
   table_of_contents: false
-
 };
 
 // Exports
