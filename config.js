@@ -34,8 +34,8 @@ var config = {
   show_on_home_default: true,
 
   // Which Theme to Use?
-  theme_dir  : path.join(__dirname, 'themes'),
-  theme_name : 'default',
+  theme_dir  : path.join(__dirname),
+  theme_name : '',
 
   // Specify the path of your content folder where all your '.md' files are located
   // Fix: Needs trailing slash for now!

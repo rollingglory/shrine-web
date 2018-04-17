@@ -53,9 +53,6 @@ function initialize (config) {
   moment.locale(config.locale);
 
   // Setup Views
-  if (!config.theme_dir)  { config.theme_dir  = path.join(__dirname, '..', 'themes'); }
-  if (!config.theme_name) { config.theme_name = 'default'; }
-  if (!config.public_dir) { config.public_dir = path.join(config.theme_dir, config.theme_name, 'public'); }
   app.set('views', path.join(config.theme_dir, config.theme_name, 'templates'));
   app.set('layout', 'layout');
   app.set('view engine', 'html');

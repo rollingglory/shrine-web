@@ -54,13 +54,14 @@
   "scripts": {
     "install": "gulp",
     "nowls": "now ls shrine | tail -n +6 | tr -s ' ' | cut -d ' ' -f 2",
-    "now": "now --public",
-    "postnow": "now alias && now rm -y $(npm run nowls --silent)",
+    "now": "now && now alias && now rm -y $(npm run nowls --silent)",
     "test": "npm run lint && mocha --reporter spec test/*.js",
-    "lint": "./node_modules/.bin/eslint bin/*.js app/**/*.js example/**/*.js test/*.js translate/*.json gulpfile.js"
+    "lint": "eslint bin/*.js app/**/*.js example/**/*.js test/*.js translate/*.json gulpfile.js"
   },
   "now": {
-    "alias": "rgb-shrine"
+    "alias": "rgb-shrine",
+    "public": true,
+    "type": "npm"
   },
   "keywords": [],
   "author": [
