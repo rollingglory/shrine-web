@@ -58,13 +58,13 @@ var config = {
   analytics: '',
 
   // Set to true to enable the web editor
-  allow_editing : true,
+  allow_editing : false,
 
   // Set to true to enable HTTP Basic Authentication
-  authentication : true,
+  authentication : false,
 
   // If editing is enabled, set this to true to only authenticate for editing, not for viewing
-  authentication_for_edit: true,
+  authentication_for_edit: false,
 
   // If authentication is enabled, set this to true to enable authentication for reading too
   authentication_for_read: false,
