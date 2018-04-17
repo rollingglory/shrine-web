@@ -1,4 +1,3 @@
-
 'use strict';
 
 // Modules
@@ -7,13 +6,10 @@ var fs                             = require('fs');
 var build_nested_pages             = require('../functions/build_nested_pages.js');
 var marked                         = require('marked');
 var toc                            = require('markdown-toc');
+var get_last_modified              = require('../functions/get_last_modified.js');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
-const contentProcessors = require('../functions/contentProcessors');
-const contentsHandler = require('../core/contents');
-const utils = require('../core/utils');
-
-function route_wildcard (config) {
+function route_wildcard (config, raneto) {
   return function (req, res, next) {
 
     // Skip if nothing matched the wildcard Regex
@@ -23,7 +19,7 @@ function route_wildcard (config) {
     var slug   = req.params[0];
     if (slug === '/') { slug = '/index'; }
 
-    var file_path      = path.normalize(config.content_dir + slug);
+    var file_path      = path.normalize(raneto.config.content_dir + slug);
     var file_path_orig = file_path;
 
     // Remove "/edit" suffix
@@ -45,13 +41,13 @@ function route_wildcard (config) {
       if (path.extname(file_path) === '.md') {
 
         // Meta
-        var meta = contentProcessors.processMeta(content);
+        var meta = raneto.processMeta(content);
         meta.custom_title = meta.title;
-        if (!meta.title) { meta.title = contentProcessors.slugToTitle(file_path); }
+        if (!meta.title) { meta.title = raneto.slugToTitle(file_path); }
 
         // Content
-        content = contentProcessors.stripMeta(content);
-        content = contentProcessors.processVars(content, config);
+        content = raneto.stripMeta(content);
+        content = raneto.processVars(content);
 
         var template = meta.template || 'page';
         var render   = template;
@@ -84,7 +80,7 @@ function route_wildcard (config) {
 
         }
 
-        var pageList = remove_image_content_directory(config, contentsHandler(slug, config));
+        var pageList = remove_image_content_directory(config, raneto.getPages(slug));
 
         var loggedIn = ((config.authentication || config.authentication_for_edit) ? req.session.loggedIn : false);
 
@@ -100,8 +96,8 @@ function route_wildcard (config) {
           pages         : build_nested_pages(pageList),
           meta          : meta,
           content       : content,
-          body_class    : template + '-' + contentProcessors.cleanString(slug),
-          last_modified : utils.getLastModified(config, meta, file_path),
+          body_class    : template + '-' + raneto.cleanString(slug),
+          last_modified : get_last_modified(config, meta, file_path),
           lang          : config.lang,
           loggedIn      : loggedIn,
           username      : (config.authentication ? req.session.username : null),

@@ -1,11 +1,10 @@
-
 'use strict';
 
 // Modules
 var fs           = require('fs');
 var get_filepath = require('../functions/get_filepath.js');
 
-function route_page_delete (config) {
+function route_page_delete (config, raneto) {
   return function (req, res, next) {
 
     var file_category;
@@ -22,7 +21,7 @@ function route_page_delete (config) {
 
     // Generate Filepath
     var filepath = get_filepath({
-      content  : config.content_dir,
+      content  : raneto.config.content_dir,
       category : file_category,
       filename : file_name
     });

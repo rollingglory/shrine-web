@@ -1,15 +1,14 @@
-
 'use strict';
 
 // Modules
 var fs           = require('fs');
 var get_filepath = require('../functions/get_filepath.js');
 
-function route_category_create (config) {
+function route_category_create (config, raneto) {
   return function (req, res, next) {
 
     fs.mkdir(get_filepath({
-      content  : config.content_dir,
+      content  : raneto.config.content_dir,
       category : req.body.category
     }), function (error) {
       if (error) {

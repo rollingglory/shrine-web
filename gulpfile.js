@@ -1,7 +1,8 @@
 'use strict';
 
+const { public_dir } = require('./config');
+const dest = `${public_dir}/lib`;
 const gulp = require('gulp');
-const dest = 'node_modules/raneto/themes/default/public/lib';
 
 gulp.task('copy_libs', () =>
   gulp
@@ -15,7 +16,7 @@ gulp.task('copy_libs', () =>
     'node_modules/sweetalert2/**/*',
     'node_modules/jquery-backstretch/**/*'
   ], { base: 'node_modules' })
-  .pipe(gulp.dest(dest))
+  .pipe(gulp.dest(public_dir))
 );
 
 

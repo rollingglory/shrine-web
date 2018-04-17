@@ -1,4 +1,3 @@
-
 'use strict';
 
 // Modules
@@ -6,10 +5,7 @@ var validator                      = require('validator');
 var _s                             = require('underscore.string');
 var remove_image_content_directory = require('../functions/remove_image_content_directory.js');
 
-const searchHandler = require('../core/search');
-const contentsHandler = require('../core/contents');
-
-function route_search (config) {
+function route_search (config, raneto) {
   return function (req, res, next) {
 
     // Skip if Search not present
@@ -25,8 +21,8 @@ function route_search (config) {
     // trim and convert to string
     var searchQuery    = validator.toString(sanitizedQuery).trim();
 
-    var searchResults  = searchHandler(searchQuery, config);
-    var pageListSearch = remove_image_content_directory(config, contentsHandler(null, config));
+    var searchResults  = raneto.doSearch(searchQuery);
+    var pageListSearch = remove_image_content_directory(config, raneto.getPages(''));
 
     // TODO: Move to Raneto Core
     // Loop through Results and Extract Category

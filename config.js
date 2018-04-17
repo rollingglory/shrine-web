@@ -34,7 +34,7 @@ var config = {
   show_on_home_default: true,
 
   // Which Theme to Use?
-  theme_dir  : path.join(__dirname, 'node_modules/raneto/themes'),
+  theme_dir  : path.join(__dirname, 'themes'),
   theme_name : 'default',
 
   // Specify the path of your content folder where all your '.md' files are located
@@ -43,7 +43,7 @@ var config = {
   content_dir : path.join(__dirname, 'content'),
 
   // Where is the public directory or document root?
-  public_dir  : path.join(__dirname, 'node_modules/raneto/themes/default/public'),
+  public_dir  : path.join(__dirname, 'themes/default/public'),
   get public_dir() {
     delete this.public_dir;
     return this.public_dir = path.join(this.theme_dir, config.theme_name, 'public');

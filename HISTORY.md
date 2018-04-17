@@ -1,4 +1,3 @@
-
 # Raneto Changelog
 
 2018.04.21 / v0.16.0
