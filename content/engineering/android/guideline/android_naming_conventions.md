@@ -1,9 +1,9 @@
 /*
-Title: Naming Conventions
+Title: Android Naming Conventions
 Description: Internal conventions for file names, class names, and variable names in the project
 */
 
-# Naming Conventions
+# Android Naming Conventions
 Internal conventions for file names, class names, and variable names in the project
   
 ## 1. File Naming
@@ -91,3 +91,101 @@ Resource files in the values folder should be plural, e.g. `strings.xml`, `style
 Additional files used in the project, such as fonts or json data should be placed inside `assets` folder. Each type of files should have a separate folder within `assets`. Folders names are written in plural form, e.g. `fonts`, `data`.
 
 Files names within `assets` should be written in lowercased words connected with hyphens, e.g. `sourceandpro-bold.ttf`, `data-chats.json`
+
+## 2. Variable and Resource Item Naming
+
+### 2.1 Class Field Name
+
+Class field name should follow the naming rules listed below.
+
+* Private, non-static field names start with `m`
+* Private, static field names start with `s`
+* Other fields start with a lower case letter
+* For fields that hold layout components, follow the rule above followed by its component type written in [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCase). If the layout component has an id, use its id name, but write it in `UpperCamelCase`.
+* Static final fields (constants) are `ALL_CAPS_WITH_UNDERSCORES`
+* Treat acronyms as words
+
+Example:
+
+```
+public class MyClass {
+    public static final int SOME_CONSTANT = 42;
+    public int publicField;
+    private static MyClass sSingleton;
+    int mPackagePrivate;
+    private int mPrivate;
+    protected int mProtected;
+    private 
+}
+```
+| Good           | Bad            |
+| -------------- | -------------- |
+| `XmlHttpRequest` | `XMLHTTPRequest` |
+| `getCustomerId`  | `getCustomerID`  |
+| `String url`     | `String URL`     |
+| `long id`        | `long ID`        |
+
+### 2.2 String Resource Item
+
+String names in resource file should follow the naming rules listed below.
+
+* String names are written in `snake_case`
+* Consider prefixing with section name or context, so that we know which section/sections it belongs to
+* If it is used in more than one section, just use English words that describe the string
+* If the string is short enough (no more than 3 words) use that string (in English) written in `snake_case` as its name
+
+Example:
+```
+<string name="error_name_empty">Nama tidak boleh kosong</string>
+<string name="dialog_payment_message">Anda telah berhasil melakukan pembayaran sebesar Rp 10.000</string>
+<string name="live_chat_desc">Konsultasikan masalah kesehatan Anda secara langsung kepada kami</string>
+<string name="start_chat">Mulai Chat</string>
+```
+
+### 2.3 Color Resource Item
+
+These color names should be defined in every project
+```
+<color name="colorPrimary">{COLOR HEX}</color>
+<color name="colorPrimaryDark">`{COLOR HEX}`</color>
+<color name="colorAccent">`{COLOR HEX}`</color>
+<color name="colorTextPrimary">`{COLOR HEX}`</color>
+<color name="colorTextSecondary">`{COLOR HEX}`</color>
+<color name="colorBackground">`{COLOR HEX}`</color>
+```
+
+If you add any other colors, its name should follow the naming rules listed below.
+
+* Color names are written in `snake_case`
+* Treat colors.xml as a color pallete instead of defining colors per element.
+
+| Good               | Bad               |
+| ------------------ | ----------------- |
+| `blue_transparent` | `button_color`    |
+| `warm_grey`        | `card_color`      |
+
+### 2.4 Dimen Resource Item
+
+Treat `dimens.xml` as a palette of typical spacings and sizes in the application instead of individual values of paddings and margins of each component
+
+These are examples of typical spacings and size that can be used
+```
+<!-- font sizes -->
+<dimen name="font_headline">21sp</dimen>
+<dimen name="font_large">17sp</dimen>
+<dimen name="font_normal">15sp</dimen>
+<dimen name="font_small">12sp</dimen>
+<dimen name="font_tiny">8sp</dimen>
+
+<!-- spacing between two views -->
+<dimen name="spacing_huge">40dp</dimen>
+<dimen name="spacing_large">24dp</dimen>
+<dimen name="spacing_normal">16dp</dimen>
+<dimen name="spacing_small">10dp</dimen>
+<dimen name="spacing_tiny">4dp</dimen>
+```
+
+### 2.5 Layout Component Id
+
+* Component id should start with the name of its component
+* If a component is used many times in layout, like `TextView` or `ImageView`, start its id with short form of the component name, e.g. `tv` or `iv`
