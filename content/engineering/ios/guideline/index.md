@@ -9,3 +9,6 @@ Code guidelines we use at [Rolling Glory](http://rollingglory.com/) when develop
 
 * #### [Naming Conventions](ios_naming_conventions)
   Internal conventions for file names, class names, and variable names in the project 
+
+* #### [Code Conventions](ios_code_conventions)
+  Internal conventions for Swift codes
