@@ -6,6 +6,26 @@ Description: Internal conventions for file names, class names, and variable name
 # iOS Naming Conventions
 
 Internal conventions for file, class, and variable names in the project.
+Taken from [Ray Wenderlich’s Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).
+
+# Table of Contents
+- [File Naming](#1.-file-naming)
+	- [Class Files](#1.1-class-files)
+		- [Special Cases](#1.1.1-special-cases)
+		- [Class Naming Rules](#1.1.2-class-naming-rules)
+	- [Resource Files](#1.2-resource-files)
+		- [Asset Files](#1.2.1-asset-files)
+	- [Method Names](#1.3-method-names)
+		- [Method Naming Rules](#1.3.1-method-naming-rules)
+		- [Method as Delegate](#1.3.2-method-as-delegate)
+		- [Method Name Semantic](#1.3.3-method-name-semantic)
+		- [Mutating Method Pairs](#1.3.4-mutating-method-pairs)
+		- [Boolean Values](#1.3.5-boolean-values)
+		- [Markdown](#1.3.6-markdown)
+	- [Variable Names](#1.4-variable-names)
+		- [Variable Naming Rules](#1.4.1-variable-naming-rules)
+
+
 
 ## 1. File Naming
 
@@ -13,11 +33,13 @@ Internal conventions for file, class, and variable names in the project.
 
 Class names are written in [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCase).
 
+
 #### 1.1.1 Special Cases
 
 * Classes that inherit iOS’ UIKit should include its superclass as a suffix of its name while trimming its superclass prefix. Example: `LoginViewController`, `EmptyView`, `GradientButton` instead of `LoginUIViewController`, `EmptyUIView`, `GradientUIButton`.
 * Classes with `NS-` as its superclass however, should not contain any suffix in its name. Example: `Engine` instead of `EngineObject`, `Vehicle` instead of `VehicleObject`
 * Classes that extend an iOS component, class name must end with `Extension`. Example: `UIButtonExtension`, `LabelExtension`, `UITableViewControllerExtension`.
+
 
 #### 1.1.2 Class Naming Rules
 
@@ -26,9 +48,11 @@ Class names are written in [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCa
 * Using names based on roles, not types.
 Example: `ForgetPasswordViewController` instead of `FPassViewController`
 
+
 ### 1.2 Resource Files
 
 Resources file names are written in __lowercase_underscore__.
+
 
 #### 1.2.1 Asset Files
 
@@ -49,7 +73,7 @@ __Images__
 * Images should have `image_` prefix. Example: `image_door`, `image_brewery`, `image_lighthouse`
 * If only used in certain part of app, add `image_[page name]_` prefix. Example: `image_tutorial_first`, `image_login_introduction`
 
-__Buttons_
+__Buttons__
 * Image as button’s background image should have `btn_` prefix. Example: `btn_login`, `btn_register`
 
 __Selectors States__
@@ -64,18 +88,20 @@ __Selectors States__
 | Selected     | `_selected`     | `btn_order_selected`        |
 
 
-### 1.2 Method Names
+### 1.3 Method Names
 
 Method names are written in [lowerCamelCase](http://en.wikipedia.org/wiki/CamelCase).
 
-#### 1.2.1 Method Naming Rules
+
+#### 1.3.1 Method Naming Rules
 
 * Method name should prioritise clarity over brevity. It is more encouraged to have longer but clearer names instead of shorter but ambiguous ones.
 * Avoid using abbreviations.
 * Use widely-known term for initialisation and operation methods. 
 Example: `loadData`, `setupViews`, `validateForm`. Avoid `fetchData`, `buildViews`, `validate`.
 
-#### 1.2.2 Method as Delegate
+
+#### 1.3.2 Method as Delegate
 
 * When creating custom delegate methods, an unnamed first parameter should be the delegate source.
 * Use delegate name as function’s name while differentiating its purpose on its parameters.
@@ -93,7 +119,8 @@ func didSelectName(namePicker: NamePickerViewController, name: String)
 func namePickerShouldReload() -> Bool
 ```
 
-#### 1.2.3 Method Name Semantic
+
+#### 1.3.3 Method Name Semantic
 
 * Remove unnecessary words, while maintaining clarity.
 Example: `func remove(at position: Index) -> Bool` instead of `func removeElement(_ position: Index) -> Bool` 
@@ -114,7 +141,8 @@ x.nounsCapitalize()
 * Begin names of factory methods with `make`.
 Example: `makeIterator()`, `makeArray(of object: Any, from source: Any)`
 
-#### 1.2.4 Mutating/Nonmutating Method Pairs
+
+#### 1.3.4 Mutating Method Pairs
 
 Often a mutating method will have a nonmutating variant with similar semantics, but that returns a new value rather than updating an instance in-place.
 
@@ -122,27 +150,34 @@ Often a mutating method will have a nonmutating variant with similar semantics, 
 Mutating: `x.sort()`, `x.append(y)` <- Value changed in-place.
 Nonmutating: `z = x.sorted()`, `z = x.appending(y)` <- Value changed in another variable.
 
-#### 1.2.5 Boolean Values
+
+#### 1.3.5 Boolean Values
 
 Uses of boolean methods and properties should read as assertions about the receiver when the use is nonmutating.
 Example: `x.isEmpty()`, `y.intersects(z)`
 
-#### 1.2.6 Markdown/Documentation
+
+#### 1.3.6 Markdown
 
 Methods that are too complex, or requires extra information should be documented.
 Refer to [Swift Documentation](http://nshipster.com/swift-documentation/)
 
-### 1.3 Variable Names
+
+### 1.4 Variable Names
 
 Variable names are written in [lowerCamelCase](http://en.wikipedia.org/wiki/CamelCase).
 
-#### 1.3.1 Variable Naming Rules
+
+#### 1.4.1 Variable Naming Rules
 
 * Use US English spelling.
 Example: `let color = “red”` instead of `let colour = “red”`
 
 * Avoid using Swift’s variable types as name.
-Example: `var greeting = “Hello”` instead of `var string = “Hello”’.
+Example: `var greeting = “Hello”` instead of `var string = “Hello”`.
 
 * User grammatically correct terms to describe boolean variable.
 Example: `let isLoading = false`, `let hasValue = true` instead of `let loading = false`, `let valued = true`
+
+
+***fin***
