@@ -30,4 +30,4 @@ gulp.task('copy_src', () => gulp
 );
 
 // Default
-gulp.task('default', ['copy_theme', 'copy_libs', 'copy_src']);
+gulp.task('default', gulp.parallel(['copy_theme', 'copy_libs', 'copy_src']));
