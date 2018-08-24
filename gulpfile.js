@@ -5,10 +5,8 @@ const dest = `${public_dir}/lib`;
 const gulp = require('gulp');
 
 gulp.task('copy_theme', () => gulp
-  .src([
-    'themes/default/**/*',
-  ])
-  .pipe(gulp.dest(dest))
+  .src(['themes/default/public/**/*'], {base: 'themes/default/public'})
+  .pipe(gulp.dest(public_dir))
 );
 
 gulp.task('copy_libs', () => gulp
@@ -21,15 +19,15 @@ gulp.task('copy_libs', () => gulp
     'node_modules/masonry-layout/**/*',
     'node_modules/sweetalert2/**/*',
     'node_modules/jquery-backstretch/**/*'
-  ], { base: 'node_modules' })
+  ], {base: 'node_modules'})
   .pipe(gulp.dest(dest))
 );
 
 
-gulp.task('copy_css', () => gulp
-  .src(['css/**/*'])
-  .pipe(gulp.dest(dest))
+gulp.task('copy_src', () => gulp
+  .src(['src/**/*'], {base: 'src'})
+  .pipe(gulp.dest(public_dir))
 );
 
 // Default
-gulp.task('default', ['copy_theme', 'copy_libs', 'copy_css']);
+gulp.task('default', ['copy_theme', 'copy_libs', 'copy_src']);
