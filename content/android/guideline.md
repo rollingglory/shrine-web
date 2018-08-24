@@ -1,6 +1,7 @@
 /*
 Title: Android Guidelines
 Description: Code guidelines we use at Rolling Glory when developing for Android. This Android guideline is a modification from Ribot Android Guidelines with some adjustments.
+Sort: -1
 */
 
 # Android Guidelines

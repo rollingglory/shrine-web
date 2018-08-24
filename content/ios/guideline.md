@@ -1,6 +1,7 @@
 /*
 Title: iOS Guidelines
 Description: Code guidelines we use at Rolling Glory when developing for iOS
+Sort: -1
 */
 
 # iOS Guidelines
