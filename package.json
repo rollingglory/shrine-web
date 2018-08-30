@@ -52,15 +52,11 @@
   },
   "scripts": {
     "install": "gulp",
-    "nowls": "now ls shrine | tail -n +6 | tr -s ' ' | cut -d ' ' -f 2",
-    "now": "now && now alias && now rm -y $(npm run nowls --silent)",
+    "nowls": "now ls shrine | tail -n +3 | tr -s ' ' | cut -d ' ' -f 3",
+    "nowrm": "now rm -y $(npm run nowls --silent)",
+    "now": "now && now alias && npm run nowrm",
     "test": "npm run lint && mocha --reporter spec test/*.js",
     "lint": "eslint bin/*.js app/**/*.js example/**/*.js test/*.js translate/*.json gulpfile.js"
-  },
-  "now": {
-    "alias": "rgb-shrine",
-    "public": true,
-    "type": "npm"
   },
   "keywords": [],
   "author": [
